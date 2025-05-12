@@ -43,7 +43,7 @@ for chunk in pd.read_csv(INPUT_FILE, dtype=str, chunksize=chunksize, low_memory=
 
     # --- Gastroenterology Logic ---
     gastro_matches = []
-    for i in range(1, 15 + 1):
+    for i in range(1, 16):
         code_col = f"Healthcare Provider Taxonomy Code_{i}"
         switch_col = f"Healthcare Provider Primary Taxonomy Switch_{i}"
 

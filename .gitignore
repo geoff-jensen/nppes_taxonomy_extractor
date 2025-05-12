@@ -1,0 +1,17 @@
+# Ignore virtual environments
+venv/
+
+# Ignore large and raw data files
+*.zip
+*.pdf
+*.csv
+data/raw/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Optional: Ignore VSCode settings and system junk
+.vscode/
+.DS_Store
+Thumbs.db

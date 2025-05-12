@@ -5,6 +5,7 @@ from pathlib import Path
 INPUT_FILE = Path("../data/raw/npidata_pfile_20050523-20250511.csv")
 OUTPUT_DIR = Path("../data/processed")
 SAMPLE_DIR = Path("../data/samples")
+SAVE_FULL_OUTPUT = False
 
 # Ensure output folders exist
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -60,8 +61,9 @@ for chunk in pd.read_csv(INPUT_FILE, dtype=str, chunksize=chunksize, low_memory=
 df_internal = pd.concat(internal_rows)
 df_gastro = pd.concat(gastro_rows)
 
-df_internal.to_csv(OUTPUT_DIR / "internal_medicine.csv", index=False)
-df_gastro.to_csv(OUTPUT_DIR / "gastroenterology.csv", index=False)
+if SAVE_FULL_OUTPUT:
+    df_internal.to_csv(OUTPUT_DIR / "internal_medicine.csv", index=False)
+    df_gastro.to_csv(OUTPUT_DIR / "gastroenterology.csv", index=False)
 
 # --- Create 10-row Samples ---
 df_internal.head(10).to_csv(SAMPLE_DIR / "internal_sample.csv", index=False)
